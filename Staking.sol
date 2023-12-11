@@ -34,7 +34,7 @@ contract Staking {
     }
 
     function withdraw(uint256 _amount) external  {
-        require(block.timestamp >= duration, "Wait for staking to end");
+        require(block.timestamp <= duration, "Wait for staking to end");
         require(msg.sender == owner, "You are not the owner");
         require(_amount > 0, "Amount must be greater than 0");
         require(stakedAmount[msg.sender] >= _amount, "Insufficient balance");
