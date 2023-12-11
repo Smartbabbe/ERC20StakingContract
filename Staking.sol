@@ -9,6 +9,7 @@ contract Staking {
 
     IERC20 public token;
     address public owner;
+    uint256 public startTime;
 
 
      mapping (address => uint256) public stakedAmount;
@@ -16,6 +17,7 @@ contract Staking {
      constructor (address _token) {
         owner = msg.sender;
         token = IERC20(_token);
+        startTime = block.timestamp;
      }
 
      function stake(uint256 _amount) external {
